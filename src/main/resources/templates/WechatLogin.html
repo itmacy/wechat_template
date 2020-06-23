@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信扫描二维码登录</title>
+    <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+</head>
+<body>
+
+    <div id = "login_container">
+    </div>
+
+<script>
+  var obj = new WxLogin({
+    self_redirect:false,
+    id:"login_container",
+    appid: "your appId",
+    scope: "snsapi_login",
+    redirect_uri: encodeURIComponent("{url}") // 重定向的路径
+  });
+</script>
+</body>
+</html>

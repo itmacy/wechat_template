@@ -1,0 +1,47 @@
+server:
+  port: 8090
+#  port: 19040
+#  address: 127.0.0.1
+  tomcat:
+    max-threads: 2000
+    max-connections: 2000
+    protocol-header-https-value: https
+#  undertow: #undertow 配置
+#    io-threads: 4 # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+#    worker-threads: 20 # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+#    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+#    buffer-size: 1024 # 每块buffer的空间大小,越小的空间被利用越充分
+#    #buffers-per-region: 1024 # 每个区分配的buffer数量 , 所以pool的大小是buffer-size * buffers-per-region
+#    direct-buffers: true # 是否分配的直接内存
+  servlet:
+    context-path: /mywechat
+    application-display-name: WechatTemplate-Web
+
+logging:
+  config: classpath:logback-spring.xml
+  path: E:/dev/Project/work/project_data/projettemplate/logs/dev   # 日志存放的位置
+  level:
+    root: info
+    org.springframework.web: info
+    com.isaigu.daxia: info
+
+spring:
+  resources:
+#    static-locations: classpath:/templates/ #配置静态资源
+  redis:   # REDIS (RedisProperties)
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 2000
+    jedis:
+      pool:
+        max-wait: -1
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+
+self-config:
+  url: 192.168.1.40:8090
+  project-description: Wechat Template
+  wechat:
+    redirect: https://smarttoilet.isaigu.com/adminWeb/index.html  #重定向地址
